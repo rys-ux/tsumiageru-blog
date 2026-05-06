@@ -6,7 +6,15 @@ const year = new Date().getFullYear();
 <footer class="footer">
   <div class="footer-inner">
     <p class="footer-text">© {year} {SITE_NAME}</p>
-    <p class="footer-sub">Powered by <a href="https://astro.build" target="_blank" rel="noopener">Astro</a></p>
+    <div class="footer-right">
+      <a href="https://x.com/iced_ame711" target="_blank" rel="noopener" class="x-link" aria-label="X (Twitter)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.259 5.631 5.905-5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+        @iced_ame711
+      </a>
+      <p class="footer-sub">Powered by <a href="https://astro.build" target="_blank" rel="noopener">Astro</a></p>
+    </div>
   </div>
 </footer>
 
@@ -32,6 +40,25 @@ const year = new Date().getFullYear();
     color: var(--color-text-muted);
   }
 
+  .footer-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .x-link {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    transition: color var(--transition);
+  }
+
+  .x-link:hover {
+    color: var(--color-text-primary);
+  }
+
   .footer-sub {
     font-size: 0.8rem;
     color: var(--color-text-muted);
@@ -51,6 +78,11 @@ const year = new Date().getFullYear();
       align-items: center;
       gap: 0.5rem;
       text-align: center;
+    }
+
+    .footer-right {
+      flex-direction: column;
+      gap: 0.4rem;
     }
   }
 </style>

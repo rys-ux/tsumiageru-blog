@@ -8,6 +8,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <header class="about-header">
         <div class="about-emoji">👋</div>
         <h1 class="about-title">このブログについて</h1>
+        <a href="https://x.com/iced_ame711" target="_blank" rel="noopener" class="x-profile-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.259 5.631 5.905-5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+          @iced_ame711
+        </a>
       </header>
       <div class="about-body prose">
         <h2>はじめに</h2>
@@ -66,6 +72,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-size: 1.75rem;
     font-weight: 800;
     color: var(--color-text-primary);
+    margin-bottom: 0.75rem;
+  }
+
+  .x-profile-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border);
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+    transition: color var(--transition), border-color var(--transition);
+  }
+
+  .x-profile-link:hover {
+    color: var(--color-text-primary);
+    border-color: var(--color-text-secondary);
   }
 
   .about-body {

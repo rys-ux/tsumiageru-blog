@@ -1,5 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import Giscus from '../components/Giscus.astro';
 
 interface Props {
   title: string;
@@ -45,6 +46,9 @@ const formattedDate = pubDate.toLocaleDateString('ja-JP', {
       </header>
       <div class="post-body prose">
         <slot />
+      </div>
+      <div class="post-comments">
+        <Giscus />
       </div>
     </article>
     <div class="post-footer">
@@ -128,7 +132,11 @@ const formattedDate = pubDate.toLocaleDateString('ja-JP', {
   }
 
   .post-body {
-    padding: 2rem 2.5rem 2.5rem;
+    padding: 2rem 2.5rem 0;
+  }
+
+  .post-comments {
+    padding: 0 2.5rem 2.5rem;
   }
 
   .post-footer {
@@ -167,7 +175,11 @@ const formattedDate = pubDate.toLocaleDateString('ja-JP', {
     }
 
     .post-body {
-      padding: 1.5rem 1.25rem;
+      padding: 1.5rem 1.25rem 0;
+    }
+
+    .post-comments {
+      padding: 0 1.25rem 1.5rem;
     }
   }
 </style>
