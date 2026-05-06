@@ -1,0 +1,88 @@
+---
+const SITE_NAME = '積み上げる20代';
+---
+
+<header class="header">
+  <div class="header-inner">
+    <a href="/" class="site-logo">
+      <span class="logo-emoji">📚</span>
+      <span class="logo-text">{SITE_NAME}</span>
+    </a>
+    <nav class="header-nav">
+      <a href="/" class="nav-link">記事一覧</a>
+      <a href="/about" class="nav-link">このブログについて</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--color-header-bg);
+    border-bottom: 1px solid var(--color-border);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .header-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .site-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-text-primary);
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
+
+  .site-logo:hover {
+    color: var(--color-accent);
+  }
+
+  .logo-emoji {
+    font-size: 1.25rem;
+  }
+
+  .header-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .nav-link {
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    transition: background-color var(--transition), color var(--transition);
+  }
+
+  .nav-link:hover {
+    background-color: var(--color-tag-bg);
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 520px) {
+    .logo-text {
+      font-size: 0.95rem;
+    }
+
+    .nav-link {
+      font-size: 0.82rem;
+      padding: 0.3rem 0.5rem;
+    }
+  }
+</style>

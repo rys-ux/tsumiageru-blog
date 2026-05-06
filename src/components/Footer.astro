@@ -1,0 +1,56 @@
+---
+const SITE_NAME = '積み上げる20代';
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="footer-inner">
+    <p class="footer-text">© {year} {SITE_NAME}</p>
+    <p class="footer-sub">Powered by <a href="https://astro.build" target="_blank" rel="noopener">Astro</a></p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+    margin-top: 4rem;
+  }
+
+  .footer-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1.75rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .footer-text {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .footer-sub {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+  }
+
+  .footer-sub a {
+    color: var(--color-text-muted);
+  }
+
+  .footer-sub a:hover {
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 520px) {
+    .footer-inner {
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      text-align: center;
+    }
+  }
+</style>

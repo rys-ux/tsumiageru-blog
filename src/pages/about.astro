@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="このブログについて" description="積み上げる20代というブログについて">
+  <div class="about-container">
+    <article class="about-card">
+      <header class="about-header">
+        <div class="about-emoji">👋</div>
+        <h1 class="about-title">このブログについて</h1>
+      </header>
+      <div class="about-body prose">
+        <h2>はじめに</h2>
+        <p>
+          「積み上げる20代」は、20代のうちに学んだこと・挑戦したこと・気づいたことを記録していくブログです。
+        </p>
+        <p>
+          プログラミング、読書、キャリア、日常の思考など、幅広いテーマで書いていきます。
+          小さなことでも積み上げ続けることが、大きな変化につながると信じています。
+        </p>
+
+        <h2>書いていること</h2>
+        <ul>
+          <li>プログラミング・技術</li>
+          <li>読書・学習記録</li>
+          <li>キャリア・仕事の考え方</li>
+          <li>日々の気づき・思考</li>
+        </ul>
+
+        <h2>ブログの書き方</h2>
+        <p>
+          記事は <code>src/content/blog/</code> フォルダに Markdown ファイルを置くだけで追加できます。
+          以下のフロントマターを設定してください：
+        </p>
+        <pre><code>---
+title: '記事タイトル'
+description: '記事の説明文'
+pubDate: '2026-01-01'
+tags: ['タグ1', 'タグ2']
+emoji: '📝'
+---</code></pre>
+      </div>
+    </article>
+  </div>
+</BaseLayout>
+
+<style>
+  .about-container {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+
+  .about-card {
+    background-color: var(--color-surface);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+  }
+
+  .about-header {
+    padding: 2.5rem 2.5rem 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+    text-align: center;
+  }
+
+  .about-emoji {
+    font-size: 3rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .about-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--color-text-primary);
+  }
+
+  .about-body {
+    padding: 2rem 2.5rem 2.5rem;
+  }
+
+  @media (max-width: 640px) {
+    .about-container {
+      padding: 1rem 0.75rem 3rem;
+    }
+
+    .about-header {
+      padding: 1.5rem 1.25rem 1.25rem;
+    }
+
+    .about-title {
+      font-size: 1.4rem;
+    }
+
+    .about-body {
+      padding: 1.5rem 1.25rem;
+    }
+  }
+</style>

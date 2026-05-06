@@ -1,0 +1,260 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  tags: string[];
+  emoji: string;
+}
+
+const { title, description, pubDate, tags, emoji } = Astro.props;
+
+const formattedDate = pubDate.toLocaleDateString('ja-JP', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="post-container">
+    <article class="post">
+      <header class="post-header">
+        <div class="post-emoji" aria-hidden="true">{emoji}</div>
+        <h1 class="post-title">{title}</h1>
+        <div class="post-meta">
+          <time class="post-date" datetime={pubDate.toISOString()}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            {formattedDate}
+          </time>
+          {tags.length > 0 && (
+            <div class="post-tags">
+              {tags.map((tag) => (
+                <span class="tag">#{tag}</span>
+              ))}
+            </div>
+          )}
+        </div>
+      </header>
+      <div class="post-body prose">
+        <slot />
+      </div>
+    </article>
+    <div class="post-footer">
+      <a href="/" class="back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        記事一覧に戻る
+      </a>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .post-container {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+
+  .post {
+    background-color: var(--color-surface);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+  }
+
+  .post-header {
+    padding: 2.5rem 2.5rem 0;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 1.5rem;
+    margin-bottom: 0;
+  }
+
+  .post-emoji {
+    font-size: 3.5rem;
+    line-height: 1;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .post-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+  }
+
+  .post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    padding-bottom: 0.25rem;
+  }
+
+  .post-date {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tag {
+    font-size: 0.8rem;
+    color: var(--color-tag-text);
+    background-color: var(--color-tag-bg);
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .post-body {
+    padding: 2rem 2.5rem 2.5rem;
+  }
+
+  .post-footer {
+    margin-top: 2rem;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    padding: 0.5rem 0;
+    transition: color var(--transition);
+  }
+
+  .back-link:hover {
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 640px) {
+    .post-container {
+      padding: 1rem 0.75rem 3rem;
+    }
+
+    .post-header {
+      padding: 1.5rem 1.25rem 1.25rem;
+    }
+
+    .post-title {
+      font-size: 1.4rem;
+    }
+
+    .post-emoji {
+      font-size: 2.75rem;
+    }
+
+    .post-body {
+      padding: 1.5rem 1.25rem;
+    }
+  }
+</style>
+
+<style is:global>
+  .prose {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--color-text-primary);
+  }
+
+  .prose h1,
+  .prose h2,
+  .prose h3,
+  .prose h4 {
+    font-weight: 700;
+    line-height: 1.4;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text-primary);
+  }
+
+  .prose h1 { font-size: 1.75rem; }
+  .prose h2 {
+    font-size: 1.35rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid var(--color-accent);
+  }
+  .prose h3 { font-size: 1.15rem; }
+  .prose h4 { font-size: 1rem; }
+
+  .prose p {
+    margin-bottom: 1.25rem;
+  }
+
+  .prose ul,
+  .prose ol {
+    margin: 1rem 0 1.25rem 1.5rem;
+  }
+
+  .prose li {
+    margin-bottom: 0.4rem;
+  }
+
+  .prose li::marker {
+    color: var(--color-accent);
+  }
+
+  .prose a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .prose a:hover {
+    color: var(--color-accent-hover);
+  }
+
+  .prose strong {
+    font-weight: 700;
+    color: var(--color-text-primary);
+  }
+
+  .prose em {
+    font-style: italic;
+  }
+
+  .prose img {
+    border-radius: var(--radius);
+    margin: 1.5rem 0;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .prose .message-box {
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius);
+    margin: 1.5rem 0;
+    border-left: 4px solid;
+  }
+
+  .prose .message-box.info {
+    background-color: #eaf4ff;
+    border-color: var(--color-accent);
+  }
+
+  .prose .message-box.warn {
+    background-color: #fff9e6;
+    border-color: #f5a623;
+  }
+</style>
